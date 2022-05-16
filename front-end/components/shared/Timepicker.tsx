@@ -10,7 +10,9 @@ const TimePicker = styled.select`
 
 export const Timepicker = (props: InputHTMLAttributes<any>) => {
   const options = AVAILABLE_HOURS.map((time: string, index) => (
-    <option key={index}>{time}</option>
+    <option key={index} value={time + ":00"}>
+      {time}
+    </option>
   ));
 
   return (

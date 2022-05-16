@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Schedule } from "../components/Schedule";
-import { VoltarButton } from "../components/shared/VoltarButton";
+import { GoBackButton } from "../components/shared/GoBackButton";
 
 const Agendar: NextPage = () => {
   const { back } = useRouter();
@@ -9,7 +9,7 @@ const Agendar: NextPage = () => {
   return (
     <>
       <Schedule />
-      <VoltarButton />
+      <GoBackButton />
     </>
   );
 };

@@ -13,25 +13,48 @@ const Container = styled.form`
   box-shadow: ${theme.cardShadow};
 `;
 
-export const LoginAdmin = () => {
-  const [form, setForm] = useState({});
+export const LoginAdmin = ({
+  onLoginSuccess,
+}: {
+  onLoginSuccess: () => void;
+}) => {
+  const [form, setForm] = useState<{ password: string; email: string }>({
+    password: "",
+    email: "",
+  });
 
-  const saveJwt = () => {
-    localStorage.setItem("jwt", crypto.randomUUID());
-  };
+  const saveJwt = () => localStorage.setItem("jwt", crypto.randomUUID());
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setForm({ ...form, [e.currentTarget.name]: e.currentTarget.value });
 
   function login(e: FormEvent) {
     e.preventDefault();
-    saveJwt();
+    console.log(form);
+
+    if (form.password === "1234") {
+      saveJwt();
+      return onLoginSuccess();
+    }
+    alert("Senha Errada! obs:a senha é 1234");
   }
 
   return (
     <Container onSubmit={login}>
-      <Input label="E-mail" onInput={handleChange} />
-      <Input label="Senha" type={"password"} onInput={handleChange} />
+      <Input
+        name="email"
+        label="E-mail"
+        type={"email"}
+        onInput={handleChange}
+        required
+      />
+      <Input
+        label="Senha"
+        name="password"
+        type={"password"}
+        onInput={handleChange}
+        required
+      />
       <Button type="submit">Entrar</Button>
     </Container>
   );

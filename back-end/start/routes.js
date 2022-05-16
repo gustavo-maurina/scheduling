@@ -5,5 +5,10 @@ const Route = use("Route");
 
 Route.on("/").render("welcome");
 
-Route.post("/create-user", "UserController.createUser");
-Route.post("/create-schedule", "ScheduleController.createSchedule");
+// USER
+Route.post("/user", "UserController.store");
+
+// SCHEDULE
+Route.post("/schedule", "ScheduleController.store");
+Route.get("/schedule", "ScheduleController.index");
+Route.get("/next-schedule-available", "ScheduleController.nextAvailable");

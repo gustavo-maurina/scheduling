@@ -14,14 +14,14 @@ const Container = styled.div`
 `;
 
 export const Schedule = () => {
-  const [userInfo, setUserInfo] = useState<string>();
+  const [userEmail, setUserEmail] = useState<string>();
 
   return (
     <Container>
-      {userInfo ? (
-        <ScheduleForm />
+      {userEmail ? (
+        <ScheduleForm userEmail={userEmail} />
       ) : (
-        <UserInfoPrompt saveUser={(userId) => setUserInfo(userId)} />
+        <UserInfoPrompt saveUser={(userEmail) => setUserEmail(userEmail)} />
       )}
     </Container>
   );

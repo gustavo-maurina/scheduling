@@ -10,7 +10,7 @@ const LoginAdministrador: NextPage = () => {
     setHasLogin(!!localStorage.getItem("jwt"));
   }, []);
 
-  if (!hasLogin) return <LoginAdmin />;
+  if (!hasLogin) return <LoginAdmin onLoginSuccess={() => setHasLogin(true)} />;
 
   return <AdminPanel />;
 };

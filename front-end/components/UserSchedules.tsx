@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../themes/theme";
-import { ScheduleList } from "./ScheduleList";
 import { Button } from "./shared/Button";
 import { Input } from "./shared/Input";
+import { UserScheduleList } from "./UserScheduleList";
 
 const Container = styled.div`
   background-color: ${theme.cardColor};
@@ -36,11 +36,12 @@ export const UserSchedules = () => {
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             label="E-mail"
             required
+            type={"email"}
           />
           <Button type="submit">Ver agenda</Button>
         </Form>
       ) : (
-        <ScheduleList />
+        <UserScheduleList email={form.email} />
       )}
     </Container>
   );

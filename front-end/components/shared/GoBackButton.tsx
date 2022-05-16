@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { Button } from "./Button";
 
-export const VoltarButton = () => {
+export const GoBackButton = () => {
   const { back } = useRouter();
 
   return (

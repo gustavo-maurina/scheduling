@@ -1,6 +1,5 @@
 import { InputHTMLAttributes } from "react";
 import styled from "styled-components";
-import { getTodayDate } from "../../utils/getTodayDate";
 
 const StyledDatepicker = styled.input`
   border: none;
@@ -10,7 +9,5 @@ const StyledDatepicker = styled.input`
 `;
 
 export const Datepicker = (props: InputHTMLAttributes<any>) => {
-  const today = getTodayDate();
-
-  return <StyledDatepicker {...props} type="date" defaultValue={today} />;
+  return <StyledDatepicker {...props} type="date" />;
 };

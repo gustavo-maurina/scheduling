@@ -11,9 +11,10 @@ class SchedulesSchema extends Schema {
       table.date("date").notNullable();
       table.time("time").notNullable();
       table.string("motive").notNullable();
-      table.string("status").notNullable();
+      table.string("status").defaultTo("OK");
       table.string("requested_at").notNullable().defaultTo("now()");
       table.string("updated_at").notNullable().defaultTo("now()");
+      table.unique(["date", "time"]);
     });
   }
 

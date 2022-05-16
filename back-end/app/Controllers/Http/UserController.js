@@ -4,7 +4,7 @@ const User = use("App/Models/User");
 const { validate } = use("Validator");
 
 class UserController {
-  async createUser({ request, response }) {
+  async store({ request, response }) {
     const rules = {
       name: "required|string",
       surname: "required|string",
