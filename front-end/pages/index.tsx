@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import { OpcoesHome } from "../components/OpcoesHome";
+import { HomeOptions } from "../components/HomeOptions";
 
 const Home: NextPage = () => {
-  return <OpcoesHome />;
+  return <HomeOptions />;
 };
 
 export default Home;
