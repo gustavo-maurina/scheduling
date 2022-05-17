@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { api } from "../config/api";
 import { ERROR_MSG } from "../constants/genericErrorMsg";
+import { getFormattedDate } from "../utils/getFormattedDate";
 
 const Container = styled.div`
   display: flex;
@@ -26,7 +27,8 @@ export const UserScheduleList = ({ email }: { email: string }) => {
           params: { email },
         });
         setSchedules(req.data);
-      } catch (err) {
+      } catch (err: any) {
+        if (err.request.status === 404) return alert("Usuário não existe");
         alert(ERROR_MSG);
       }
     }
@@ -36,7 +38,10 @@ export const UserScheduleList = ({ email }: { email: string }) => {
 
   const renderSchedules = () =>
     schedules?.map((schedule, index) => (
-      <Row key={index}>{schedule.motive}</Row>
+      <Row key={index}>
+        {schedule.motive}
+        <div>{getFormattedDate(new Date(schedule.date))}</div>
+      </Row>
     ));
 
   return (

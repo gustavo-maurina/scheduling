@@ -21,7 +21,10 @@ export const ScheduleForm = ({ userEmail }: { userEmail: string }) => {
 
   async function agendarHorario(e: FormEvent) {
     e.preventDefault();
-    if (!isSlotValid(form.time, form.date)) return alert("Horário inválido");
+    if (!isSlotValid(form.time, form.date))
+      return alert(
+        "Horário inválido, selecione uma data que não tenha passado"
+      );
 
     const req = await createSchedule(form);
 

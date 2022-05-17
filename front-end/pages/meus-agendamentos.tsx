@@ -5,7 +5,7 @@ import { UserSchedules } from "../components/UserSchedules";
 const MeusAgendamentos: NextPage = () => {
   return (
     <>
-      <UserSchedules />;
+      <UserSchedules />
       <GoBackButton />
     </>
   );

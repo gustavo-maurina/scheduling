@@ -30,12 +30,12 @@ export const LoginAdmin = ({
 
   function login(e: FormEvent) {
     e.preventDefault();
-    console.log(form);
 
     if (form.password === "1234") {
       saveJwt();
       return onLoginSuccess();
     }
+
     alert("Senha Errada! obs:a senha é 1234");
   }
 

@@ -1,5 +1,6 @@
 "use strict";
 
+const Database = use("Database");
 const Schedule = use("App/Models/Schedule");
 const User = use("App/Models/User");
 const { validate } = use("Validator");
@@ -14,9 +15,13 @@ const storeRules = {
 class ScheduleController {
   async index({ request, response }) {
     const { email } = request.get();
+    console.log(email);
 
     if (email) {
       const user = await User.findBy("email", request.only(["email"]).email);
+      if (!user)
+        return response.status(404).send({ error: "Usuário não existe" });
+
       const schedules = await Schedule.query()
         .where("user_id", user.id)
         .fetch();
@@ -58,6 +63,19 @@ class ScheduleController {
     const nextSchedule = await Schedule.nextAvailable(date, time);
 
     response.send({ nextAvailable: nextSchedule });
+  }
+
+  async cancel({ request, response, params }) {
+    const validation = await validate(params, { id: "required" });
+    if (validation.fails())
+      return response.status(500).send(validation.messages());
+
+    const { id } = params;
+    const schedule = Database.table("schedules")
+      .where("id", id)
+      .update("status", "CANCELED");
+
+    response.status(200).send(JSON.stringify(schedule));
   }
 }
 

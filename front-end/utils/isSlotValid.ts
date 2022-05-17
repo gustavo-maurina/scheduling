@@ -4,8 +4,14 @@ export function isSlotValid(time: string, date: string) {
   const day = parseInt(date.split("-")[2]);
   const hours = parseInt(time.split(":")[0]);
 
+  console.log(new Date(year, month, day, hours, 0, 0));
+  console.log(new Date());
+  console.log(
+    new Date(year, month, day, hours, 0, 0).getTime() >= new Date().getTime()
+  );
+
   const dateValid =
-    new Date(year, month, day, hours, 0, 0).getTime() >= new Date().getTime();
+    new Date(year, month, day, hours, 0, 0).getTime() < new Date().getTime();
 
   return dateValid;
 }
