@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { AdminPanel } from "../components/AdminPanel";
 import { LoginAdmin } from "../components/LoginAdmin";
+import { GoBackButton } from "../components/shared/GoBackButton";
 
 const LoginAdministrador: NextPage = () => {
   const [hasLogin, setHasLogin] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const LoginAdministrador: NextPage = () => {
 
   if (!hasLogin) return <LoginAdmin onLoginSuccess={() => setHasLogin(true)} />;
 
-  return <AdminPanel />;
+  return <GoBackButton />;
 };
 
 export default LoginAdministrador;
