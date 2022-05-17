@@ -1,5 +1,8 @@
 ## Configurações
 
+## Observação
+`useEffect()` roda duas vezes, devido ao React 18 simular um mount/unmount antes do mount
+
 ## Ambiente de desenvolvimento
 
 ```bash
