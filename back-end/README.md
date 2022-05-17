@@ -29,7 +29,7 @@ adonis serve --dev
 
 ## Migrations
 
-O banco de dados está hospedado no Heroku, e mantive dados inseridos durante testes por lá.
+O banco de dados está hospedado no Heroku e as credenciais no arquivo `config/database.js` pra facilitar caso queiram acessar, e mantive alguns dados inseridos durante testes por lá.
 
 Para voltar o estado do banco ao zero, rodar:
 
